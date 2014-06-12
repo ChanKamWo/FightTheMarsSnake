@@ -6,11 +6,9 @@
 class MarsSnake : public SnakeBase{
 public:
 	static MarsSnake* createMarsSnake(PlayScene* ps, Position headPos, int ori, float speed = 1);
+	int getNextDirection();
 
 	CREATE_FUNC(MarsSnake);
-
-protected:
-	int getNextDirection();
 };
 
 #endif
