@@ -9,12 +9,11 @@
 
 #include "SnakeBase.h"
 #include "cocos2d.h"
+USING_NS_CC;
 
 class Effect : public Ref
 {
 protected:
-
-    SnakeBase* targetSnake;
 
     float speedAddtion;
 

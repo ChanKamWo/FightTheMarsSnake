@@ -29,7 +29,7 @@ inline int nrand( int lr, int rr )
 }
 
 
-int nrand( int n ){
+inline int nrand( int n ){
     if ( n <= 0 || n > RAND_MAX )
         throw domain_error( "Argument to nrand is out of range" );
 

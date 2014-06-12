@@ -15,9 +15,8 @@ class Food : public Sprite
 {
 private:
     Effect* effect;
+    std::string getFoodImage();
 
-
-    std::string foodType;
 public:
     Effect* getEffect() const {
         return effect;

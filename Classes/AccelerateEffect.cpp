@@ -15,6 +15,5 @@ AccelerateEffect::AccelerateEffect()
 
 void AccelerateEffect::work( SnakeBase* snake )
 {
-    targetSnake->setSpeed();
-    //targetSnake->injectEffect( this );
+    snake->setSpeed( snake->getSpeed() + 1 );
 }

@@ -2,6 +2,7 @@
 #include "SnakeNode.h"
 #include "PlayScene.h"
 #include "GameEnd.h"
+#include "Food.h"
 
 void SnakeBase::setSpeed(float speed){
 	schedule(schedule_selector(SnakeBase::move), 1 / speed);
@@ -41,7 +42,7 @@ void SnakeBase::move(float dt){
 	//判断有无吃到食物
 //	if(scene->getFood()){
 		log("eat");
-		
+        scene->getFood()->getEffect()->work(this);
 //	}
 }
 
