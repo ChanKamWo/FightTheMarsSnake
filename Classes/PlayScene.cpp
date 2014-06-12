@@ -17,12 +17,15 @@ bool PlayScene::init(){
 			matrix[i][j] = tiledMap->getLayer("obstacles")->getTileGIDAt(gridToTiledCoordinate(Position(i,j)));
 		}
 	}
-	auto marsSnake = MarsSnake::createMarsSnake(this, Position(5,3), 0, 3);
+	auto marsSnake = MarsSnake::createMarsSnake(this, Position(12,21), 2, 3);
 	addChild(marsSnake);
-	addSnakeToMatrix(marsSnake);
-	auto earthSnake = EarthSnake::createEarthSnake(this, Position(3,3), 0, 3);
+	snakes.push_back(marsSnake);
+	auto earthSnake = EarthSnake::createEarthSnake(this, Position(2, 3), 0, 3);
 	addChild(earthSnake);
-	addSnakeToMatrix(earthSnake);
+	snakes.push_back(earthSnake);
+	for(auto snake : snakes){
+		addSnakeToMatrix(snake);
+	}
 	return true;
 }
 
@@ -45,4 +48,10 @@ Scene* PlayScene::createScene(){
 	auto scene = Scene::create();
 	scene->addChild(PlayScene::create());
 	return scene;
+}
+
+void PlayScene::stop(){
+	for(auto snake : snakes){
+		snake->unschedule(schedule_selector(SnakeBase::move));
+	}
 }
