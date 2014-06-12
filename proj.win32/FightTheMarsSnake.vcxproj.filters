@@ -13,6 +13,9 @@
     <Filter Include="Classes\snakes">
       <UniqueIdentifier>{fb40901f-7fec-4fff-bb6a-e96c2c9af5f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\food">
+      <UniqueIdentifier>{3f3bd797-dadb-4f47-9a2a-1403477be432}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -32,6 +35,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\MarsSnake.cpp">
       <Filter>Classes\snakes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EarthSnake.cpp">
+      <Filter>Classes\snakes</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectFactory.cpp">
+      <Filter>Classes\food</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +64,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\MarsSnake.h">
       <Filter>Classes\snakes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EarthSnake.h">
+      <Filter>Classes\snakes</Filter>
+    </ClInclude>
+    <ClInclude Include="food.h">
+      <Filter>Classes\food</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectFactory.h">
+      <Filter>Classes\food</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

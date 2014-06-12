@@ -18,6 +18,7 @@ public:
 	int getClassifier(){return classifier;}
 	void setScore(int score){this->score = score;}
 	int getScore(){return score;}
+	std::vector<SnakeNode*> getSnakeNodes(){return snakeNodes;}
 
 	CREATE_FUNC(SnakeBase);
 

@@ -6,7 +6,7 @@
 #include <vector>
 
 class Food;
-class Snake;
+class SnakeBase;
 
 class PlayScene : public cocos2d::Layer
 {
@@ -18,15 +18,16 @@ public:
     CREATE_FUNC(PlayScene);
 
 	static cocos2d::Scene* createScene();
+	void addSnakeToMatrix(SnakeBase* snake);
 
 	void setGrid(int r, int c, int id){matrix[r][c] = id;}
 	int getGrid(int r, int c){if(r < TILE_MAP_ROW_SIZE && r >= 0 && c >= 0 && c < TILE_MAP_COL_SIZE){return matrix[r][c];}return -1;}
 	Food* getFood(){return food;}
-	std::vector<Snake*> getSnakes(){return snakes;}
+	std::vector<SnakeBase*> getSnakes(){return snakes;}
 
 private:
 	cocos2d::TMXTiledMap *tiledMap;
-	std::vector<Snake*> snakes;
+	std::vector<SnakeBase*> snakes;
 	Food *food;
 	int matrix[TILE_MAP_ROW_SIZE][TILE_MAP_COL_SIZE];
 	Position tiledToGridCoordinate(cocos2d::Point);

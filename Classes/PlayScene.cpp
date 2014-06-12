@@ -1,6 +1,9 @@
 #include "PlayScene.h"
 #include "cocos2d.h"
 #include "MarsSnake.h"
+#include "EarthSnake.h"
+#include "SnakeBase.h"
+#include "SnakeNode.h"
 
 USING_NS_CC;
 
@@ -14,8 +17,20 @@ bool PlayScene::init(){
 			matrix[i][j] = tiledMap->getLayer("obstacles")->getTileGIDAt(gridToTiledCoordinate(Position(i,j)));
 		}
 	}
-	addChild(MarsSnake::createMarsSnake(this, Position(3,3), 0, 10));
+	auto marsSnake = MarsSnake::createMarsSnake(this, Position(5,3), 0, 3);
+	addChild(marsSnake);
+	addSnakeToMatrix(marsSnake);
+	auto earthSnake = EarthSnake::createEarthSnake(this, Position(3,3), 0, 3);
+	addChild(earthSnake);
+	addSnakeToMatrix(earthSnake);
 	return true;
+}
+
+void PlayScene::addSnakeToMatrix(SnakeBase* snake){
+	for(auto snakeNode : snake->getSnakeNodes()){
+		Position pos = snakeNode->getGridPosition();
+		matrix[pos.row][pos.col] = snake->getClassifier();
+	}
 }
 
 Position PlayScene::tiledToGridCoordinate(Point pos){
