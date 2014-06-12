@@ -1,7 +1,13 @@
 #ifndef EFFECT_FACTORY_H
 #define EFFECT_FACTORY_H
 
-class Effect;
+#include <string>
+#include <vector>
+#include <list>
+#include <iostream>
+#include <assert.h>
+
+#include "Effect.h"
 
 class EffectFactory
 {

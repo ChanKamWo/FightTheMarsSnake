@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\layer">
+      <UniqueIdentifier>{a5fb9c9a-f88f-4057-aa43-b010294aa812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\scene">
+      <UniqueIdentifier>{c83504ce-227d-458e-a648-e1eac0af968c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\sprite">
+      <UniqueIdentifier>{b0f4a134-e2c1-4981-ae9a-c8755219df43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\model">
+      <UniqueIdentifier>{f18ebb33-5b8b-43b0-a88f-c37c2ac57ea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\model\effect">
+      <UniqueIdentifier>{aa792f3f-6fba-4225-8abb-29d57432c5fd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameController.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ActionLayer.cpp">
+      <Filter>Classes\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FailLayer.cpp">
+      <Filter>Classes\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EffectFactory.cpp">
+      <Filter>Classes\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Food.cpp">
+      <Filter>Classes\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLoseScene.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameWinScene.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MapLayer.cpp">
+      <Filter>Classes\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MenuAnimationLayer.cpp">
+      <Filter>Classes\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MenuLayer.cpp">
+      <Filter>Classes\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ScenairoLayer.cpp">
+      <Filter>Classes\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ScoreLayer.cpp">
+      <Filter>Classes\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MenuScene.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PlayScene.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WinLayer.cpp">
+      <Filter>Classes\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FrozenEffect.cpp">
+      <Filter>Classes\model\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NullEffect.cpp">
+      <Filter>Classes\model\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlimEffect.cpp">
+      <Filter>Classes\model\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlowDownEffect.cpp">
+      <Filter>Classes\model\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StealScoreEffect.cpp">
+      <Filter>Classes\model\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TurnEffect.cpp">
+      <Filter>Classes\model\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AccelerateEffect.cpp">
+      <Filter>Classes\model\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\IntroScene.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PauseLayer.cpp">
+      <Filter>Classes\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MarsSnake.cpp">
+      <Filter>Classes\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SnakeNode.cpp">
+      <Filter>Classes\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EarthSnake.cpp">
+      <Filter>Classes\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SnakeBase.cpp">
+      <Filter>Classes\sprite</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameController.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ActionLayer.h">
+      <Filter>Classes\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FailLayer.h">
+      <Filter>Classes\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Direction.h">
+      <Filter>Classes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EffectFactory.h">
+      <Filter>Classes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Food.h">
+      <Filter>Classes\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLoseScene.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameWinScene.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MapLayer.h">
+      <Filter>Classes\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MenuAnimationLayer.h">
+      <Filter>Classes\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MenuLayer.h">
+      <Filter>Classes\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScenairoLayer.h">
+      <Filter>Classes\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScoreLayer.h">
+      <Filter>Classes\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MenuScene.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PlayScene.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GridType.h">
+      <Filter>Classes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WinLayer.h">
+      <Filter>Classes\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect.h">
+      <Filter>Classes\model\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FrozenEffect.h">
+      <Filter>Classes\model\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NullEffect.h">
+      <Filter>Classes\model\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlimEffect.h">
+      <Filter>Classes\model\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlowDownEffect.h">
+      <Filter>Classes\model\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StealScoreEffect.h">
+      <Filter>Classes\model\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TurnEffect.h">
+      <Filter>Classes\model\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AccelerateEffect.h">
+      <Filter>Classes\model\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\IntroScene.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PauseLayer.h">
+      <Filter>Classes\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppMacros.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MarsSnake.h">
+      <Filter>Classes\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SnakeNode.h">
+      <Filter>Classes\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EarthSnake.h">
+      <Filter>Classes\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RandomNum.h">
+      <Filter>Classes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SnakeBase.h">
+      <Filter>Classes\sprite</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

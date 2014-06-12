@@ -2,7 +2,10 @@
 Thumbs.db
 
 # Ignore directories of cocos2dx
-cocos2d/
+/cocos2d
+
+*.bak
+*.zip
 
 # Ignore files build by Visual Studio
 *.obj
