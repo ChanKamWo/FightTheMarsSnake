@@ -1,4 +1,3 @@
 {
-    "base": "foods/"
-    "images": ["apple.png", "frog1.png", "frog2.png", "rat.png"]
+    "images": ["foods/apple.png", "foods/frog1.png", "foods/frog2.png", "foods/rat.png"]
 }

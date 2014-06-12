@@ -40,10 +40,11 @@ void SnakeBase::move(float dt){
 	scene->setGrid(pos.row, pos.col, classifier);
 
 	//判断有无吃到食物
-//	if(scene->getFood()){
+	if(scene->getFood()->getGridPosition() == pos){
 		log("eat");
         scene->getFood()->getEffect()->work(this);
-//	}
+        scene->eliminateFood();
+	}
 }
 
 void SnakeBase::eat(Food* food){

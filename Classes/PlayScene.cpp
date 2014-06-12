@@ -4,6 +4,7 @@
 #include "EarthSnake.h"
 #include "SnakeBase.h"
 #include "SnakeNode.h"
+#include "Food.h"
 
 USING_NS_CC;
 
@@ -26,6 +27,7 @@ bool PlayScene::init(){
 	for(auto snake : snakes){
 		addSnakeToMatrix(snake);
 	}
+    addFood();
 	return true;
 }
 
@@ -54,4 +56,14 @@ void PlayScene::stop(){
 	for(auto snake : snakes){
 		snake->unschedule(schedule_selector(SnakeBase::move));
 	}
+}
+
+void PlayScene::addFood(){
+    food = Food::create();
+    food->setGridPosition( Position( 7, 7 ) );
+    addChild( food );
+}
+
+void PlayScene::eliminateFood(){
+    removeChild( food );
 }

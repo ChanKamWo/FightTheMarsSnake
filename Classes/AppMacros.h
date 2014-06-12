@@ -11,6 +11,9 @@
 struct Position{
 	Position(int r = 0, int c = 0):row(r),col(c){}
 	int row, col;
+    bool operator == ( const Position pos ){
+        return pos.row == row && pos.col == col;
+    }
 };
 
 enum SnakeNodeType{

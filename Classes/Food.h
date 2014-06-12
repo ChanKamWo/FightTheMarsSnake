@@ -9,6 +9,8 @@
 
 #include "Effect.h"
 #include "cocos2d.h"
+#include "AppMacros.h"
+
 USING_NS_CC;
 
 class Food : public Sprite
@@ -16,10 +18,15 @@ class Food : public Sprite
 private:
     Effect* effect;
     std::string getFoodImage();
+    Position position;
 
 public:
     Effect* getEffect() const {
         return effect;
+    }
+    void setGridPosition( Position );
+    Position getGridPosition(){
+        return position;
     }
     bool init();
     CREATE_FUNC( Food );

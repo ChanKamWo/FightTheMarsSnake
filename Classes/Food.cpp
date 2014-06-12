@@ -25,6 +25,10 @@ std::string Food::getFoodImage(){
     auto& array = doc["images"];
 
     int choice = nrand( 1, array.Size() );
-
     return array[choice].GetString();
+}
+
+void Food::setGridPosition( Position pos ){
+    setPosition( ( pos.col + 0.5 ) * getContentSize().width, ( TILE_MAP_ROW_SIZE - 0.5 - pos.row ) * getContentSize().height );
+    position = pos;
 }
