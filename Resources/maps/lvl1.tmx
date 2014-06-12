@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="15" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="草地" tilewidth="32" tileheight="32">
+  <image source="tiles.png" trans="ff00ff" width="256" height="3648"/>
+ </tileset>
+ <layer name="background" width="25" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxTYmBgUKIjZiQgxohHHQwz4TEbHaPLETKbkB343MjIgOkOQnbg8wu2sMHmD2L8Q4od2PxCjbjGFj644mswYiYG/HE23DAhv9IjHEixY7C5Z6AxAPPdKwc=
+  </data>
+ </layer>
+ <layer name="obstacles" width="25" height="15">
+  <data encoding="base64" compression="zlib">
+   eJyTZGBgkKIhlgZiRQbqAnM0vvIQtgPZHlrYgQ5G7SDfDmckTCs7aAHItSMJivHJU2oHMW4g1o5UKthHLzs0gViLhlgbiAGa+g4Q
+  </data>
+ </layer>
+</map>
