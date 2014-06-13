@@ -13,9 +13,11 @@ class PlayScene;
 
 class SnakeBase : public Node{
 public:
-	void setSpeed(float speed);
-	float getSpeed(){return speed;}
-	void sleep(float t);
+    void setSpeed( float speed );
+    float getSpeed(){
+        return speed;
+    }
+	void sleep(float time);
 	int getClassifier(){return classifier;}
 	void setScore(int score){this->score = score;}
 	int getScore(){return score;}
@@ -30,7 +32,7 @@ public:
 
 protected:
 	int score;
-	float speed;
+    float speed;
 	int classifier;
 	PlayScene* scene;
 	std::vector<SnakeNode*> snakeNodes;

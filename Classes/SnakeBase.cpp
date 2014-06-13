@@ -4,9 +4,16 @@
 #include "GameEnd.h"
 #include "Food.h"
 
-void SnakeBase::setSpeed(float speed){
-	schedule(schedule_selector(SnakeBase::move), 1 / speed);
-	this->speed = speed;
+void SnakeBase::setSpeed( float speed ){
+    if ( speed > 10 )
+    {
+        this->speed = 10;
+    }
+    else{
+        this->speed = speed;
+    }
+    schedule( schedule_selector( SnakeBase::move ), 1 / this->speed);
+	
 }
 
 void SnakeBase::sleep(float t){
@@ -72,8 +79,8 @@ void SnakeBase::addTail(){
 }
 
 void SnakeBase::removeBody(int num){
-	for(int i = snakeNodes.size() - num;i < snakeNodes.size();i++)
+	for(size_t i = snakeNodes.size() - num;i < snakeNodes.size();i++)
 		scene->setGrid(snakeNodes[i]->getGridPosition().row, snakeNodes[i]->getGridPosition().col, 0);
-	for(int i = snakeNodes.size() - num - 1;i < snakeNodes.size() - 1;i++)
+    for ( size_t i = snakeNodes.size() - num - 1; i < snakeNodes.size() - 1; i++ )
 		scene->removeChild(snakeNodes[i]);
 }

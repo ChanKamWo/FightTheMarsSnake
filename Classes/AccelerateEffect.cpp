@@ -9,12 +9,11 @@
 
 AccelerateEffect::AccelerateEffect()
 {
-    speedAddtion = -0.1f;
-    scoreCut = 0;
 }
 
 void AccelerateEffect::work( SnakeBase* snake )
 {
-	if(snake->getSpeed() < 10)
-	    snake->setSpeed( snake->getSpeed() + 1 );
+    float origin = snake->getSpeed();
+    if ( origin < 10 )
+        snake->setSpeed( origin + 2 );
 }

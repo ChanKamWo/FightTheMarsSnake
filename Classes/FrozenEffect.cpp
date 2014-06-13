@@ -13,5 +13,5 @@ FrozenEffect::FrozenEffect()
 
 void FrozenEffect::work( SnakeBase* snake )
 {
-    snake->sleep( 6.0 );
+    snake->sleep( 4.0 );
 }

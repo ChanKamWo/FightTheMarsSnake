@@ -15,8 +15,6 @@ class Effect : public Ref
 {
 protected:
 
-    float speedAddtion;
-
     volatile float scoreCut;
 
 public:

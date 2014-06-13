@@ -12,6 +12,8 @@
 
 class AccelerateEffect : public Effect
 {
+private:
+    void continueWork();
 public:
     AccelerateEffect();
 

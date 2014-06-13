@@ -5,10 +5,11 @@
 #include "AppMacros.h"
 #include <vector>
 
+USING_NS_CC;
 class Food;
 class SnakeBase;
 
-class PlayScene : public cocos2d::Layer
+class PlayScene : public Layer
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -17,7 +18,7 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(PlayScene);
 
-	static cocos2d::Scene* createScene();
+	static Scene* createScene();
 	void addSnakeToMatrix(SnakeBase* snake);
 	void stop();
 
@@ -29,12 +30,21 @@ public:
 	std::vector<SnakeBase*> getSnakes(){return snakes;}
 
 private:
-	cocos2d::TMXTiledMap *tiledMap;
+    SnakeBase* earthSnake;
+    SnakeBase* marsSnake;
+    Label* eSpeedLabel;
+    Label* mSpeedLabel;
+    Label* eScoreLabel;
+    Label* mScoreLabel;
+
+	TMXTiledMap *tiledMap;
 	std::vector<SnakeBase*> snakes;
 	Food *food;
 	int matrix[TILE_MAP_ROW_SIZE][TILE_MAP_COL_SIZE];
-	Position tiledToGridCoordinate(cocos2d::Point);
-	cocos2d::Point gridToTiledCoordinate(Position);
+	Position tiledToGridCoordinate(Point);
+	Point gridToTiledCoordinate(Position);
+    void createScoreLayer(  );
+    void updateScore( float interval );
 };
 
 #endif // __PLAY_SCENE_H__
