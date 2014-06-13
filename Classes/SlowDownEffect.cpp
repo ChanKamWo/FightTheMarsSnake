@@ -21,7 +21,8 @@ void SlowDownEffect::work( SnakeBase* snake )
     {
         if (var!=snake)
         {
-            var->setSpeed( var->getSpeed() - 1 );
+			if(var->getSpeed() > 1)
+	           var->setSpeed( var->getSpeed() - 1 );
         }
     }
 }
