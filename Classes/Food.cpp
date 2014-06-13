@@ -24,8 +24,12 @@ std::string Food::getFoodImage(){
     doc.Parse<0>( contentStr.c_str() );
     auto& array = doc["images"];
 
-    int choice = nrand( 1, array.Size() );
-    return array[choice].GetString();
+    if (array.IsArray())
+    {
+        int choice = nrand( 1, array.Size() );
+        return array[choice-1].GetString();
+    }
+    return "food.png";
 }
 
 void Food::setGridPosition( Position pos ){

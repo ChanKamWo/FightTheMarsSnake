@@ -17,30 +17,34 @@
 
 Effect* EffectFactory::createRandomEffect()
 {
-    int region = nrand( 1, 10 );
-    if ( region >= 1 && region <= 3 )
+    int region = nrand( 1, 100 );
+    if ( region >= 1 && region <= 30 )
     {
-        int val = nrand( 1, 10 );
-        switch ( val )
+        int val = nrand( 1, 100 );
+
+        if ( val >= 1 && val <= 20 )
         {
-            case 1:
-            case 2:
-                return createAccelerateEffect();
-            case 3:
-            case 4:
-                return createFrozenEffect();
-            case 5:
-            case 6:
-                return createSlimEffect();
-            case 7:
-            case 8:
-                return createSlowDownEffect();
-            case 9:
-                return createTurnEffect();
-            case 10:
-                return createStealScoreEffect();
-            default:
-                break;
+            return createAccelerateEffect();
+        }
+        if ( val >= 21 && val <= 40 )
+        {
+            return createFrozenEffect();
+        }
+        if ( val >= 41 && val <= 60 )
+        {
+            return createSlimEffect();
+        }
+        if ( val >= 61 && val <= 80 )
+        {
+            return createSlowDownEffect();
+        }
+        if ( val >= 81 && val <= 90 )
+        {
+            return createTurnEffect();
+        }
+        if ( val >= 91 && val <= 100 )
+        {
+            return createStealScoreEffect();
         }
     }
     return createNullEffect();

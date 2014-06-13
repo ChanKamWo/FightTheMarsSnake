@@ -21,11 +21,11 @@ using std::domain_error;
 *******************************************************************************/
 inline int nrand( int lr, int rr )
 {
-    static std::default_random_engine generator( ( unsigned ) time( nullptr ) );
-    static std::uniform_int_distribution<int> dis( lr, rr );
-    static auto dice = std::bind( dis, generator );
-
-    return dice();
+    
+    std::uniform_int_distribution<int> dis( lr, rr );
+    std::random_device rd;
+    std::default_random_engine generator( rd() );
+    return dis(generator);
 }
 
 
