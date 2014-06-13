@@ -16,6 +16,5 @@ public:
     FrozenEffect();
 
     void work( SnakeBase* snake );
-
 };
 #endif

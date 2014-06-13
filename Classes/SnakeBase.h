@@ -24,6 +24,8 @@ public:
 	void eat(Food* food);
 	void addTail();
 	void removeBody(int num);
+	void frozen(float t);
+	void removeFrozenImage(float dt);
 	virtual int getNextDirection(){return 0;}
 
 	CREATE_FUNC(SnakeBase);
@@ -34,6 +36,7 @@ protected:
 	int classifier;
 	PlayScene* scene;
 	std::vector<SnakeNode*> snakeNodes;
+	std::vector<Sprite*> frozenImgs;
 	Position tailPos;
 	int tailOrien;
 };

@@ -5,7 +5,7 @@
 #include <assert.h>
 
 #include "StealScoreEffect.h"
-
+#include "PlayScene.h"
 
 StealScoreEffect::StealScoreEffect()
 {
@@ -13,4 +13,5 @@ StealScoreEffect::StealScoreEffect()
 
 void StealScoreEffect::work( SnakeBase* snake )
 {
+	
 }

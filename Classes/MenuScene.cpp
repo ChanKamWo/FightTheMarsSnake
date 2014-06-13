@@ -28,7 +28,7 @@ bool MenuScene::init()
 
 void MenuScene::initBackground(){
 
-    Sprite* bgImage = Sprite::create( "welcome.jpg" );
+    Sprite* bgImage = Sprite::create( "welcome.png" );
     Size appSize = Director::getInstance()->getWinSizeInPixels();
     bgImage->setScaleX( appSize.width / bgImage->getContentSize().width );
     bgImage->setScaleY( appSize.height / bgImage->getContentSize().height );

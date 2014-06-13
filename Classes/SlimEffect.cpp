@@ -15,4 +15,6 @@ void SlimEffect::work( SnakeBase* snake )
 {
 	if(snake->getSnakeNodes().size() >= 6)
 		snake->removeBody(3);
+	else if(snake->getSnakeNodes().size() >= 4)
+		snake->removeBody(1);
 }
