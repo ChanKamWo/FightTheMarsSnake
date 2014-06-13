@@ -15,5 +15,6 @@ AccelerateEffect::AccelerateEffect()
 
 void AccelerateEffect::work( SnakeBase* snake )
 {
-    snake->setSpeed( snake->getSpeed() + 1 );
+	if(snake->getSpeed() < 10)
+	    snake->setSpeed( snake->getSpeed() + 1 );
 }

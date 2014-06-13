@@ -22,6 +22,8 @@ public:
 	std::vector<SnakeNode*> getSnakeNodes(){return snakeNodes;}
 	void move(float dt);
 	void eat(Food* food);
+	void addTail();
+	void removeBody(int num);
 	virtual int getNextDirection(){return 0;}
 
 	CREATE_FUNC(SnakeBase);
@@ -32,6 +34,8 @@ protected:
 	int classifier;
 	PlayScene* scene;
 	std::vector<SnakeNode*> snakeNodes;
+	Position tailPos;
+	int tailOrien;
 };
 
 #endif
