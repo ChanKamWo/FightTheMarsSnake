@@ -12,15 +12,14 @@
 #include "SlimEffect.h"
 #include "StealScoreEffect.h"
 #include "TurnEffect.h"
-#include "RandomNum.h"
 
 
 Effect* EffectFactory::createRandomEffect()
 {
-    int region = nrand( 1, 10 );
+    int region = rand( 10 ) + 1;
     if ( region >= 1 && region <= 3 )
     {
-        int val = nrand( 1, 10 );
+        int val = rand( 10 ) + 1;
         switch ( val )
         {
             case 1:

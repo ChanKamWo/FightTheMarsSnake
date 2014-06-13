@@ -162,6 +162,16 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Food.h" />
     <ClInclude Include="..\Classes\FrozenEffect.h" />
     <ClInclude Include="..\Classes\GameEnd.h" />
+    <ClInclude Include="..\Classes\json\document.h" />
+    <ClInclude Include="..\Classes\json\filestream.h" />
+    <ClInclude Include="..\Classes\json\internal\pow10.h" />
+    <ClInclude Include="..\Classes\json\internal\stack.h" />
+    <ClInclude Include="..\Classes\json\internal\strfunc.h" />
+    <ClInclude Include="..\Classes\json\prettywriter.h" />
+    <ClInclude Include="..\Classes\json\rapidjson.h" />
+    <ClInclude Include="..\Classes\json\reader.h" />
+    <ClInclude Include="..\Classes\json\stringbuffer.h" />
+    <ClInclude Include="..\Classes\json\writer.h" />
     <ClInclude Include="..\Classes\MarsSnake.h" />
     <ClInclude Include="..\Classes\MenuScene.h" />
     <ClInclude Include="..\Classes\NullEffect.h" />

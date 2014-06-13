@@ -16,6 +16,12 @@
     <Filter Include="Classes\effect">
       <UniqueIdentifier>{0b103601-7abf-4d4d-bc1e-6fdd4c6e386e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\json">
+      <UniqueIdentifier>{a56354db-6a46-40e2-894d-5e732bb06d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\json\internal">
+      <UniqueIdentifier>{4bb9795f-87e7-4bb1-97e1-d9e2d0267d45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -133,6 +139,36 @@
     </ClInclude>
     <ClInclude Include="..\Classes\TurnEffect.h">
       <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\document.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\filestream.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\prettywriter.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\rapidjson.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\reader.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\stringbuffer.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\writer.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\internal\pow10.h">
+      <Filter>Classes\json\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\internal\stack.h">
+      <Filter>Classes\json\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\internal\strfunc.h">
+      <Filter>Classes\json\internal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
