@@ -5,6 +5,7 @@
 #include "SnakeBase.h"
 #include "SnakeNode.h"
 #include "Food.h"
+#include <vector>
 
 USING_NS_CC;
 
@@ -59,8 +60,17 @@ void PlayScene::stop(){
 }
 
 void PlayScene::addFood(){
+	std::vector<Position> grids;
+	for(int i = 0;i < TILE_MAP_ROW_SIZE;i++){
+		for(int j = 0;j < TILE_MAP_COL_SIZE;j++){
+			if(matrix[i][j] == 0){
+				grids.push_back(Position(i, j));
+			}
+		}
+	}
+	auto pos = grids[rand(grids.size())];
     food = Food::create();
-    food->setGridPosition( Position( 7, 7 ) );
+    food->setGridPosition(pos);
     addChild( food );
 }
 

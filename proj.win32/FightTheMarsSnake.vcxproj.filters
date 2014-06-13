@@ -13,6 +13,9 @@
     <Filter Include="Classes\snakes">
       <UniqueIdentifier>{fb40901f-7fec-4fff-bb6a-e96c2c9af5f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\effect">
+      <UniqueIdentifier>{0b103601-7abf-4d4d-bc1e-6fdd4c6e386e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -38,6 +41,36 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GameEnd.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Food.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MenuScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AccelerateEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EffectFactory.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FrozenEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NullEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlimEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlowDownEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StealScoreEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TurnEffect.cpp">
+      <Filter>Classes\effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +100,39 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameEnd.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Food.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MenuScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AccelerateEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EffectFactory.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FrozenEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NullEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlimEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlowDownEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StealScoreEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TurnEffect.h">
+      <Filter>Classes\effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

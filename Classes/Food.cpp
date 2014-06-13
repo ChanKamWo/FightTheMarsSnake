@@ -8,7 +8,6 @@
 #include "EffectFactory.h"
 #include "json\prettywriter.h"
 #include "json\document.h"
-#include "RandomNum.h"
 
 bool Food::init(){
     this->initWithFile( getFoodImage() );
@@ -24,7 +23,7 @@ std::string Food::getFoodImage(){
     doc.Parse<0>( contentStr.c_str() );
     auto& array = doc["images"];
 
-    int choice = nrand( 1, array.Size() );
+    int choice = rand(array.Size());
     return array[choice].GetString();
 }
 
