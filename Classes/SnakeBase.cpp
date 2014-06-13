@@ -56,20 +56,27 @@ void SnakeBase::move(float dt){
 		eat(scene->getFood());
         scene->eliminateFood();
 		scene->addFood();
+		//判断有无获得胜利分数
+		if(score >= 300){
+			if(classifier < 0)
+				Director::getInstance()->replaceScene(GameEnd::createLoseScene(scene->getSnakes()));
+			else
+				Director::getInstance()->replaceScene(GameEnd::createWinScene(scene->getSnakes()));
+		}
 	}
 }
 
 void SnakeBase::eat(Food* food){
-	food->getEffect()->work(this);
 	score += 10;
 	addTail();
+	food->getEffect()->work(this);
 }
 
 void SnakeBase::addTail(){
 	auto lastOne = snakeNodes[snakeNodes.size() - 1];
 	auto lastButOne = snakeNodes[snakeNodes.size() - 2];
 	auto snakeNode = SnakeNode::createSnakeNode(lastOne->getGridPosition(), lastOne->getOrientation(), classifier, SnakeNodeType::BODY);
-	scene->addChild(snakeNode);
+	addChild(snakeNode);
 	lastOne->setOrientation(tailOrien);
 	lastOne->setGridPosition(tailPos);
 	scene->setGrid(lastOne->getGridPosition().row, lastOne->getGridPosition().col, classifier);
@@ -81,6 +88,25 @@ void SnakeBase::addTail(){
 void SnakeBase::removeBody(int num){
 	for(size_t i = snakeNodes.size() - num;i < snakeNodes.size();i++)
 		scene->setGrid(snakeNodes[i]->getGridPosition().row, snakeNodes[i]->getGridPosition().col, 0);
-    for ( size_t i = snakeNodes.size() - num - 1; i < snakeNodes.size() - 1; i++ )
-		scene->removeChild(snakeNodes[i]);
+	for(int i = snakeNodes.size() - num - 1;i < snakeNodes.size() - 1;i++)
+		removeChild(snakeNodes[i]);
+}
+
+void SnakeBase::frozen(float t){
+	for(auto snakeNode : snakeNodes){
+		auto sprite = Sprite::create("ice.png");
+		sprite->setPosition(snakeNode->getPosition());
+		frozenImgs.push_back(sprite);
+		addChild(sprite, 10);
+	}
+	sleep(t);
+	scheduleOnce(schedule_selector(SnakeBase::removeFrozenImage), t);
+}
+
+void SnakeBase::removeFrozenImage(float dt){
+	for(auto sprite : frozenImgs){
+		removeChild(sprite);
+	}
+	frozenImgs.clear();
+
 }

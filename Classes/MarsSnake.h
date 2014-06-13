@@ -9,6 +9,8 @@ public:
 	int getNextDirection();
 
 	CREATE_FUNC(MarsSnake);
+protected:
+	int calcManhattanDistance(Position, Position);
 };
 
 #endif
