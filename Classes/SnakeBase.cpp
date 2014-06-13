@@ -44,6 +44,7 @@ void SnakeBase::move(float dt){
 		log("eat");
         scene->getFood()->getEffect()->work(this);
         scene->eliminateFood();
+		scene->addFood();
 	}
 }
 

@@ -17,7 +17,7 @@ void SlowDownEffect::work( SnakeBase* snake )
 {
     vector<SnakeBase*> snakes = dynamic_cast<PlayScene*>( snake->getParent() )->getSnakes();
 
-    for each ( SnakeBase* var in snakes )
+    for ( SnakeBase* var : snakes )
     {
         if (var!=snake)
         {

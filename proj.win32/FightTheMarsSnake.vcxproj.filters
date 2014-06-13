@@ -13,6 +13,15 @@
     <Filter Include="Classes\snakes">
       <UniqueIdentifier>{fb40901f-7fec-4fff-bb6a-e96c2c9af5f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\effect">
+      <UniqueIdentifier>{0b103601-7abf-4d4d-bc1e-6fdd4c6e386e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\json">
+      <UniqueIdentifier>{a56354db-6a46-40e2-894d-5e732bb06d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\json\internal">
+      <UniqueIdentifier>{4bb9795f-87e7-4bb1-97e1-d9e2d0267d45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -38,6 +47,36 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GameEnd.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Food.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MenuScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AccelerateEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EffectFactory.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FrozenEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NullEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlimEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlowDownEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StealScoreEffect.cpp">
+      <Filter>Classes\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TurnEffect.cpp">
+      <Filter>Classes\effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +106,69 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameEnd.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Food.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MenuScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AccelerateEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EffectFactory.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FrozenEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NullEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlimEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlowDownEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StealScoreEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TurnEffect.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\document.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\filestream.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\prettywriter.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\rapidjson.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\reader.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\stringbuffer.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\writer.h">
+      <Filter>Classes\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\internal\pow10.h">
+      <Filter>Classes\json\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\internal\stack.h">
+      <Filter>Classes\json\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\json\internal\strfunc.h">
+      <Filter>Classes\json\internal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
