@@ -1,17 +1,12 @@
-#ifndef FOOD_H
-#define FOOD_H
+#ifndef __FOOD_H__
+#define __FOOD_H__
 
-#include <string>
-#include <vector>
-#include <list>
-#include <iostream>
-#include <assert.h>
-
-#include "Effect.h"
 #include "cocos2d.h"
 #include "AppMacros.h"
 
 USING_NS_CC;
+
+class Effect;
 
 class Food : public Sprite
 {
@@ -19,6 +14,7 @@ private:
     Effect* effect;
     std::string getFoodImage();
     Position position;
+	int score;
 
 public:
     Effect* getEffect() const {
@@ -28,6 +24,7 @@ public:
     Position getGridPosition(){
         return position;
     }
+	int getScore(){return score;}
     bool init();
     CREATE_FUNC( Food );
 };

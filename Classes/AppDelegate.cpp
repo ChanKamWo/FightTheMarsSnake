@@ -18,23 +18,21 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = GLView::create("Fight The Alien Snake");
-		glview->setFrameSize(800, 480);
         director->setOpenGLView(glview);
     }
 
-	glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::SHOW_ALL);
+	glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::EXACT_FIT);
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    //director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = MenuScene::createScene();
+	auto scene = MenuScene::createScene();
 
-    // run
-    director->runWithScene(scene);
+	director->runWithScene(scene);
 
     return true;
 }

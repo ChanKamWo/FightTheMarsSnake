@@ -136,34 +136,55 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AccelerateEffect.cpp" />
+    <ClCompile Include="..\Classes\ActionLayer.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\EarthSnake.cpp" />
     <ClCompile Include="..\Classes\EffectFactory.cpp" />
+    <ClCompile Include="..\Classes\FailLayer.cpp" />
     <ClCompile Include="..\Classes\Food.cpp" />
     <ClCompile Include="..\Classes\FrozenEffect.cpp" />
+    <ClCompile Include="..\Classes\GameController.cpp" />
     <ClCompile Include="..\Classes\GameEnd.cpp" />
+    <ClCompile Include="..\Classes\GameLoseScene.cpp" />
+    <ClCompile Include="..\Classes\GameWinScene.cpp" />
+    <ClCompile Include="..\Classes\IntroScene.cpp" />
+    <ClCompile Include="..\Classes\MapLayer.cpp" />
     <ClCompile Include="..\Classes\MarsSnake.cpp" />
+    <ClCompile Include="..\Classes\MenuAnimationLayer.cpp" />
+    <ClCompile Include="..\Classes\MenuLayer.cpp" />
     <ClCompile Include="..\Classes\MenuScene.cpp" />
     <ClCompile Include="..\Classes\NullEffect.cpp" />
+    <ClCompile Include="..\Classes\PauseLayer.cpp" />
     <ClCompile Include="..\Classes\PlayScene.cpp" />
+    <ClCompile Include="..\Classes\ScenairoLayer.cpp" />
+    <ClCompile Include="..\Classes\ScoreLayer.cpp" />
     <ClCompile Include="..\Classes\SlimEffect.cpp" />
     <ClCompile Include="..\Classes\SlowDownEffect.cpp" />
     <ClCompile Include="..\Classes\SnakeBase.cpp" />
     <ClCompile Include="..\Classes\SnakeNode.cpp" />
     <ClCompile Include="..\Classes\StealScoreEffect.cpp" />
     <ClCompile Include="..\Classes\TurnEffect.cpp" />
+    <ClCompile Include="..\Classes\WinLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AccelerateEffect.h" />
+    <ClInclude Include="..\Classes\ActionLayer.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AppMacros.h" />
+    <ClInclude Include="..\Classes\Direction.h" />
     <ClInclude Include="..\Classes\EarthSnake.h" />
     <ClInclude Include="..\Classes\Effect.h" />
     <ClInclude Include="..\Classes\EffectFactory.h" />
+    <ClInclude Include="..\Classes\FailLayer.h" />
     <ClInclude Include="..\Classes\Food.h" />
     <ClInclude Include="..\Classes\FrozenEffect.h" />
+    <ClInclude Include="..\Classes\GameController.h" />
     <ClInclude Include="..\Classes\GameEnd.h" />
+    <ClInclude Include="..\Classes\GameLoseScene.h" />
+    <ClInclude Include="..\Classes\GameWinScene.h" />
+    <ClInclude Include="..\Classes\GridType.h" />
+    <ClInclude Include="..\Classes\IntroScene.h" />
     <ClInclude Include="..\Classes\json\document.h" />
     <ClInclude Include="..\Classes\json\filestream.h" />
     <ClInclude Include="..\Classes\json\internal\pow10.h" />
@@ -174,17 +195,24 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\json\reader.h" />
     <ClInclude Include="..\Classes\json\stringbuffer.h" />
     <ClInclude Include="..\Classes\json\writer.h" />
+    <ClInclude Include="..\Classes\MapLayer.h" />
     <ClInclude Include="..\Classes\MarsSnake.h" />
+    <ClInclude Include="..\Classes\MenuAnimationLayer.h" />
+    <ClInclude Include="..\Classes\MenuLayer.h" />
     <ClInclude Include="..\Classes\MenuScene.h" />
     <ClInclude Include="..\Classes\NullEffect.h" />
+    <ClInclude Include="..\Classes\PauseLayer.h" />
     <ClInclude Include="..\Classes\PlayScene.h" />
     <ClInclude Include="..\Classes\RandomNum.h" />
+    <ClInclude Include="..\Classes\ScenairoLayer.h" />
+    <ClInclude Include="..\Classes\ScoreLayer.h" />
     <ClInclude Include="..\Classes\SlimEffect.h" />
     <ClInclude Include="..\Classes\SlowDownEffect.h" />
     <ClInclude Include="..\Classes\SnakeBase.h" />
     <ClInclude Include="..\Classes\SnakeNode.h" />
     <ClInclude Include="..\Classes\StealScoreEffect.h" />
     <ClInclude Include="..\Classes\TurnEffect.h" />
+    <ClInclude Include="..\Classes\WinLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

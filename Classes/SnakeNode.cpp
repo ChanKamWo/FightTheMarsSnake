@@ -1,12 +1,8 @@
 #include "SnakeNode.h"
 
-SnakeNode* SnakeNode::createSnakeNode(Position pos, int ori, int classifier, SnakeNodeType type){
+SnakeNode* SnakeNode::createSnakeNode(Position pos, int ori, string classifier, SnakeNodeType type){
 	auto snakeNode = create();
-	std::string file;
-	if(classifier > 0)
-		file = snakesDirectory + "/E" + snakeNodeTypeString[type];
-	else
-		file = snakesDirectory + "/M" + snakeNodeTypeString[type];
+	auto file = snakesDirectory + "/" + classifier + snakeNodeTypeString[type];
 	snakeNode->setTexture(file);
 	snakeNode->setGridPosition(pos);
 	snakeNode->setOrientation(ori);

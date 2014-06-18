@@ -13,14 +13,14 @@
     <Filter Include="Classes\snakes">
       <UniqueIdentifier>{fb40901f-7fec-4fff-bb6a-e96c2c9af5f2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\effect">
-      <UniqueIdentifier>{0b103601-7abf-4d4d-bc1e-6fdd4c6e386e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\json">
       <UniqueIdentifier>{a56354db-6a46-40e2-894d-5e732bb06d57}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\json\internal">
       <UniqueIdentifier>{4bb9795f-87e7-4bb1-97e1-d9e2d0267d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\food">
+      <UniqueIdentifier>{0b103601-7abf-4d4d-bc1e-6fdd4c6e386e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,50 +33,29 @@
     <ClCompile Include="..\Classes\PlayScene.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SnakeBase.cpp">
-      <Filter>Classes\snakes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\SnakeNode.cpp">
       <Filter>Classes\snakes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\MarsSnake.cpp">
-      <Filter>Classes\snakes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EarthSnake.cpp">
-      <Filter>Classes\snakes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameEnd.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Food.cpp">
-      <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\MenuScene.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\AccelerateEffect.cpp">
-      <Filter>Classes\effect</Filter>
+    <ClCompile Include="..\Classes\Snake.cpp">
+      <Filter>Classes\snakes</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveStrategy.cpp">
+      <Filter>Classes\snakes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Food.cpp">
+      <Filter>Classes\food</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\EffectFactory.cpp">
-      <Filter>Classes\effect</Filter>
+      <Filter>Classes\food</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\FrozenEffect.cpp">
-      <Filter>Classes\effect</Filter>
+    <ClCompile Include="..\Classes\Effect.cpp">
+      <Filter>Classes\food</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\NullEffect.cpp">
-      <Filter>Classes\effect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SlimEffect.cpp">
-      <Filter>Classes\effect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SlowDownEffect.cpp">
-      <Filter>Classes\effect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\StealScoreEffect.cpp">
-      <Filter>Classes\effect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\TurnEffect.cpp">
-      <Filter>Classes\effect</Filter>
+    <ClCompile Include="..\Classes\TimeAndScorePanel.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,53 +71,11 @@
     <ClInclude Include="..\Classes\PlayScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SnakeBase.h">
-      <Filter>Classes\snakes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\SnakeNode.h">
       <Filter>Classes\snakes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\MarsSnake.h">
-      <Filter>Classes\snakes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EarthSnake.h">
-      <Filter>Classes\snakes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameEnd.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Food.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\MenuScene.h">
       <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AccelerateEffect.h">
-      <Filter>Classes\effect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Effect.h">
-      <Filter>Classes\effect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EffectFactory.h">
-      <Filter>Classes\effect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\FrozenEffect.h">
-      <Filter>Classes\effect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\NullEffect.h">
-      <Filter>Classes\effect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SlimEffect.h">
-      <Filter>Classes\effect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SlowDownEffect.h">
-      <Filter>Classes\effect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\StealScoreEffect.h">
-      <Filter>Classes\effect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\TurnEffect.h">
-      <Filter>Classes\effect</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\json\document.h">
       <Filter>Classes\json</Filter>
@@ -169,6 +106,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\json\internal\strfunc.h">
       <Filter>Classes\json\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Snake.h">
+      <Filter>Classes\snakes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MoveStrategy.h">
+      <Filter>Classes\snakes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Food.h">
+      <Filter>Classes\food</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Effect.h">
+      <Filter>Classes\food</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EffectFactory.h">
+      <Filter>Classes\food</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TimeAndScorePanel.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

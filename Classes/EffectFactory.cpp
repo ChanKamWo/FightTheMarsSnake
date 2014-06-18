@@ -1,53 +1,24 @@
-#include <string>
-#include <vector>
-#include <list>
-#include <iostream>
-#include <assert.h>
-
 #include "EffectFactory.h"
-#include "NullEffect.h"
-#include "SlowDownEffect.h"
-#include "AccelerateEffect.h"
-#include "FrozenEffect.h"
-#include "SlimEffect.h"
-#include "StealScoreEffect.h"
-#include "TurnEffect.h"
-#include "RandomNum.h"
-
+#include "Effect.h"
+#include "AppMacros.h"
 
 Effect* EffectFactory::createRandomEffect()
 {
-    int region = nrand( 1, 100 );
-    if ( region >= 1 && region <= 30 )
+    int region = rand( 10 );
+    if ( region <= 3 )
     {
-        int val = nrand( 1, 100 );
-
-        if ( val >= 1 && val <= 20 )
-        {
-            return createAccelerateEffect();
-        }
-        if ( val >= 21 && val <= 40 )
-        {
-            return createFrozenEffect();
-        }
-        if ( val >= 41 && val <= 60 )
-        {
-            return createSlimEffect();
-        }
-        if ( val >= 61 && val <= 80 )
-        {
-            return createSlowDownEffect();
-        }
-        if ( val >= 81 && val <= 90 )
-        {
-            return createTurnEffect();
-        }
-        if ( val >= 91 && val <= 100 )
-        {
-            return createStealScoreEffect();
-        }
-    }
-    return createNullEffect();
+        region = rand( 100 );
+		if(region < 10){
+			return createFrozenEffect();
+		}else if(region < 40){
+			return createSpeedUpEffect();
+		}else if(region < 70){
+			return createSlowDownEffect();
+		}else{
+			return createSlimEffect();
+		}
+    }else
+	    return createNullEffect();
 }
 
 Effect* EffectFactory::createNullEffect()
@@ -60,27 +31,16 @@ Effect* EffectFactory::createSlowDownEffect()
     return new SlowDownEffect();
 }
 
-Effect* EffectFactory::createAccelerateEffect()
+Effect* EffectFactory::createSpeedUpEffect()
 {
-    return new AccelerateEffect();
+    return new SpeedUpEffect();
 }
 
 Effect* EffectFactory::createFrozenEffect()
 {
-    return new FrozenEffect();
+	return new FrozenEffect();
 }
 
-Effect* EffectFactory::createSlimEffect()
-{
-    return new SlimEffect();
-}
-
-Effect* EffectFactory::createStealScoreEffect()
-{
-    return new StealScoreEffect();
-}
-
-Effect* EffectFactory::createTurnEffect()
-{
-    return new TurnEffect();
+Effect* EffectFactory::createSlimEffect(){
+	return new SlimEffect();
 }

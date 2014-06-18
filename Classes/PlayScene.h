@@ -5,46 +5,48 @@
 #include "AppMacros.h"
 #include <vector>
 
+using namespace std;
 USING_NS_CC;
+
 class Food;
-class SnakeBase;
+class Snake;
+class TimeAndScorePanel;
 
 class PlayScene : public Layer
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
-    
+
+    void startGame();
+	void addSnake(Snake* pSnake);
+	virtual void onEnterTransitionDidFinish();
+	void detectCollision(Snake*);
+	void placeFood();
+	void stop();
+	void win(bool);
+	void backToMenuCallBack(Ref*);
+
     // implement the "static node()" method manually
     CREATE_FUNC(PlayScene);
-
-	static Scene* createScene();
-	void addSnakeToMatrix(SnakeBase* snake);
-	void stop();
-
-	void setGrid(int r, int c, int id){matrix[r][c] = id;}
-	int getGrid(int r, int c){if(r < TILE_MAP_ROW_SIZE && r >= 0 && c >= 0 && c < TILE_MAP_COL_SIZE){return matrix[r][c];}return -1;}
+	int getNextDir(){return nextDir;}
+	void resetNextDir(){nextDir = -1;}
+	vector<Snake*> getSnakes(){return snakes;}
+	TMXTiledMap* getTiledMap(){return tiledMap;}
 	Food* getFood(){return food;}
-    void addFood();
-    void eliminateFood();
-	std::vector<SnakeBase*> getSnakes(){return snakes;}
+
+	static cocos2d::Scene* createScene();
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+#endif
 
 private:
-    SnakeBase* earthSnake;
-    SnakeBase* marsSnake;
-    Label* eSpeedLabel;
-    Label* mSpeedLabel;
-    Label* eScoreLabel;
-    Label* mScoreLabel;
-
-	TMXTiledMap *tiledMap;
-	std::vector<SnakeBase*> snakes;
-	Food *food;
-	int matrix[TILE_MAP_ROW_SIZE][TILE_MAP_COL_SIZE];
-	Position tiledToGridCoordinate(Point);
-	Point gridToTiledCoordinate(Position);
-    void createScoreLayer(  );
-    void updateScore( float interval );
+	int nextDir;
+	vector<Snake*> snakes;
+	TMXTiledMap* tiledMap;
+	Food* food;
+	TimeAndScorePanel* panel;
 };
 
 #endif // __PLAY_SCENE_H__

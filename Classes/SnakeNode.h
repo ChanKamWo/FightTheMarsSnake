@@ -3,12 +3,14 @@
 
 #include "cocos2d.h"
 #include "AppMacros.h"
+#include <string>
 
+using namespace std;
 USING_NS_CC;
 
 class SnakeNode : public Sprite{
 public:
-	static SnakeNode* createSnakeNode(Position pos, int ori, int classifier, SnakeNodeType type);
+	static SnakeNode* createSnakeNode(Position pos, int ori, string classifier, SnakeNodeType type);
 	void setOrientation(int ori);
 	int getOrientation(){return orientation;}
 	void setGridPosition(Position);

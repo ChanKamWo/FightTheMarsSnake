@@ -3,7 +3,7 @@
 
 Scene* GameEnd::createWinScene(const vector<SnakeBase*>& snakes){
 	auto layer = create();
-	auto sprite = Sprite::create("gameend.png");
+	auto sprite = Sprite::create("gamewin.png");
 	auto size = Director::getInstance()->getVisibleSize();
 	sprite->setPosition(size.width / 2, size.height / 2);
 	sprite->setScale(size.width / sprite->getContentSize().width, size.height / sprite->getContentSize().height);
@@ -15,7 +15,7 @@ Scene* GameEnd::createWinScene(const vector<SnakeBase*>& snakes){
 
 Scene* GameEnd::createLoseScene(const vector<SnakeBase*>& snakes){
 	auto layer = create();
-	auto sprite = Sprite::create("gameend.png");
+	auto sprite = Sprite::create("gameover.png");
 	auto size = Director::getInstance()->getVisibleSize();
 	sprite->setPosition(size.width / 2, size.height / 2);
 	sprite->setScale(size.width / sprite->getContentSize().width, size.height / sprite->getContentSize().height);

@@ -1,123 +1,185 @@
 #include "PlayScene.h"
 #include "cocos2d.h"
-#include "MarsSnake.h"
-#include "EarthSnake.h"
-#include "SnakeBase.h"
+#include "Snake.h"
 #include "SnakeNode.h"
+#include "AppMacros.h"
+#include "MoveStrategy.h"
 #include "Food.h"
-#include <vector>
+#include "Effect.h"
+#include "TimeAndScorePanel.h"
+#include "MenuScene.h"
 
 USING_NS_CC;
 
 bool PlayScene::init(){
-    if ( !Layer::init() )
-        return false;
-    tiledMap = TMXTiledMap::create( mapsDirectory + "/lvl1.tmx" );
-    addChild( tiledMap );
-    for ( int i = 0; i < TILE_MAP_ROW_SIZE; i++ ){
-        for ( int j = 0; j < TILE_MAP_COL_SIZE; j++ ){
-            matrix[i][j] = tiledMap->getLayer( "obstacles" )->getTileGIDAt( gridToTiledCoordinate( Position( i, j ) ) );
-        }
-    }
-    marsSnake = MarsSnake::createMarsSnake( this, Position( 12, 21 ), 2, 2 );
-    addChild( marsSnake );
-    snakes.push_back( marsSnake );
-    earthSnake = EarthSnake::createEarthSnake( this, Position( 2, 3 ), 0, 2 );
-    addChild( earthSnake );
-    snakes.push_back( earthSnake );
-    for ( auto snake : snakes ){
-        addSnakeToMatrix( snake );
-    }
-    addFood();
-    createScoreLayer();
-    return true;
+	if(!Layer::init())
+		return false;
+
+	nextDir = -1;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	auto listener = EventListenerKeyboard::create();
+    listener->onKeyPressed = CC_CALLBACK_2(PlayScene::onKeyPressed, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+#endif
+
+	tiledMap = TMXTiledMap::create(mapsDirectory + "/lvl1.tmx");
+	addChild(tiledMap);
+
+	Position epositions[] = {Position(2, 4), Position(2, 3), Position(2, 2)};
+	auto esnake = Snake::createSnake(this, "E1", vector<Position>(epositions, epositions + sizeof(epositions) / sizeof(Position)), 0);
+	addSnake(esnake);
+	auto estrategy = new HumanControlStrategy(this);
+	esnake->setStrategy(estrategy);
+
+	Position mpositions[] = {Position(12, 20), Position(12, 21), Position(12, 22)};
+	auto msnake = Snake::createSnake(this, "M1", vector<Position>(mpositions, mpositions + sizeof(mpositions) / sizeof(Position)), 2);
+	addSnake(msnake);
+	auto mstrategy = new ManhattanDistStrategy(msnake, this);
+	msnake->setStrategy(mstrategy);
+
+	panel = TimeAndScorePanel::create();
+	addChild(panel, 2);
+
+	return true;
 }
 
-void PlayScene::addSnakeToMatrix( SnakeBase* snake ){
-    for ( auto snakeNode : snake->getSnakeNodes() ){
-        Position pos = snakeNode->getGridPosition();
-        matrix[pos.row][pos.col] = snake->getClassifier();
-    }
-}
-
-Position PlayScene::tiledToGridCoordinate( Point pos ){
-    return Position( pos.y, pos.x );
-}
-
-Point PlayScene::gridToTiledCoordinate( Position pos ){
-    return Point( pos.col, pos.row );
-}
 
 Scene* PlayScene::createScene(){
-    auto scene = Scene::create();
-    scene->addChild( PlayScene::create() );
-    return scene;
+	auto scene = Scene::create();
+	auto layer = PlayScene::create();
+	scene->addChild(PlayScene::create());
+	return scene;
+}
+
+void PlayScene::onEnterTransitionDidFinish(){
+	startGame();
+}
+
+void PlayScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event){
+	switch(keyCode){
+	case 23:
+		nextDir = 2;
+		break;
+	case 25:
+		nextDir = 3;
+		break;
+	case 24:
+		nextDir = 0;
+		break;
+	default:
+		nextDir = 1;
+	}
+	log("Key with keycode %d pressed", keyCode);
+}
+
+void PlayScene::addSnake(Snake* pSnake){
+	snakes.push_back(pSnake);
+	addChild(pSnake, 1.5);
+}
+
+void PlayScene::startGame(){
+	panel->start();
+	food = Food::create();
+	placeFood();
+	addChild(food);
+	for(auto snake : snakes){
+		snake->setSpeed(10);
+	}
+}
+
+void PlayScene::detectCollision(Snake* pSnake){
+	auto nodes = pSnake->getSnakeNodes();
+	auto head = nodes[0];
+	if(food->getGridPosition() == head->getGridPosition()){
+		pSnake->setScore(pSnake->getScore() + 10);
+		if(pSnake->getName().substr(0, 1) == "E"){
+			panel->setEarthSnakeScore(pSnake->getScore());
+		}else{
+			panel->setMarsSnakeScore(pSnake->getScore());
+		}
+		pSnake->grow();
+		auto effect = food->getEffect();
+		effect->work(this, pSnake);
+		removeChild(food);
+		food = Food::create();
+		placeFood();
+		addChild(food);
+		if(pSnake->getScore() >= 300){
+			win(pSnake->getName().substr(0, 1) == "E");
+		}
+	}else{
+		for(int i = 0;i < 15;i++){
+			for(int j = 0;j < 25;j++){
+				if(tiledMap->getLayer("obstacles")->getTileGIDAt(gridToTiledCoordinate(Position(i, j))) != 0){
+					if(head->getGridPosition() == Position(i, j)){
+						win(pSnake->getName().substr(0, 1) != "E");
+						return;
+					}
+				}
+			}
+		}
+		for(auto snake : snakes){
+			for(auto node : snake->getSnakeNodes()){
+				if(head != node && head->getGridPosition() == node->getGridPosition()){
+					win(pSnake->getName().substr(0, 1) != "E");
+					return;
+				}
+			}
+		}
+	}
+}
+
+void PlayScene::placeFood(){
+	bool matrix[15][25];
+	for(int i = 0;i < 15;i++){
+		for(int j = 0;j < 25;j++){
+			if(tiledMap->getLayer("obstacles")->getTileGIDAt(gridToTiledCoordinate(Position(i, j))) != 0){
+				matrix[i][j] = true;
+			}else{
+				matrix[i][j] = false;
+			}
+		}
+	}
+	for(auto snake : snakes){
+		for(auto node : snake->getSnakeNodes()){
+			matrix[node->getGridPosition().row][node->getGridPosition().col] = true;
+		}
+	}
+	vector<Position> vec;
+	for(int i = 0;i < 15;i++){
+		for(int j = 0;j < 25;j++){
+			if(!matrix[i][j])
+				vec.push_back(Position(i, j));
+		}
+	}
+	food->setGridPosition(vec[rand(vec.size())]);
 }
 
 void PlayScene::stop(){
-    for ( auto snake : snakes ){
-        snake->unschedule( schedule_selector( SnakeBase::move ) );
+	panel->unscheduleAllSelectors();
+	for ( auto snake : snakes ){
+		snake->unscheduleAllSelectors();
     }
 }
 
-void PlayScene::addFood(){
-    std::vector<Position> grids;
-    for ( int i = 0; i < TILE_MAP_ROW_SIZE; i++ ){
-        for ( int j = 0; j < TILE_MAP_COL_SIZE; j++ ){
-            if ( matrix[i][j] == 0 ){
-                grids.push_back( Position( i, j ) );
-            }
-        }
-    }
-    auto pos = grids[rand( grids.size() )];
-    food = Food::create();
-    food->setGridPosition( pos );
-    addChild( food );
+void PlayScene::win(bool flag){
+	stop();
+	string tip = flag? "You Win" : "You Lose";
+	auto tipLabel = Label::createWithTTF(tip, "fonts/tahoma.ttf", 36);
+
+	Size size = Director::getInstance()->getWinSize();
+	tipLabel->setPosition(size.width / 2, size.height / 2 * 3);
+	addChild(tipLabel, 2);
+
+	auto back = MenuItemFont::create("Go Back", CC_CALLBACK_1(PlayScene::backToMenuCallBack, this));
+	auto menu = Menu::create(back, NULL);
+	menu->setPosition(size.width  - back->getContentSize().width / 2, back->getContentSize().height / 2);
+	addChild(menu, 2);
+	
+	tipLabel->runAction(Sequence::create(MoveTo::create(0.4, Point(size.width / 2, size.height / 2.2)), MoveTo::create(0.2, Point(size.width / 2, size.height / 1.8)),
+		MoveTo::create(0.2, Point(size.width / 2, size.height / 2)), NULL));
 }
 
-void PlayScene::eliminateFood(){
-    removeChild( food );
-}
-
-void PlayScene::createScoreLayer(){
-
-    TTFConfig ttfConfig;
-    ttfConfig.fontSize = 30;
-    ttfConfig.fontFilePath = "fonts/Marker Felt.ttf";
-
-    auto eLabel = Label::createWithTTF( ttfConfig, "Earth Snake" );
-    auto mLabel = Label::createWithTTF( ttfConfig, "Mars Snake" );
-
-    Size frameSize = Director::getInstance()->getOpenGLView()->getFrameSize();
-
-    eLabel->setPosition( Point( frameSize.width*0.1, frameSize.height*0.95 ) );
-    mLabel->setPosition( Point( frameSize.width*0.9, frameSize.height*0.95 ) );
-    addChild( eLabel, 10 );
-    addChild( mLabel, 10 );
-
-    eScoreLabel = Label::createWithBMFont( "fonts/markerFelt.fnt", "Score: 0" );
-    eScoreLabel->setPosition( Point( frameSize.width*0.1, frameSize.height*0.90 ) );
-    addChild( eScoreLabel, 10 );
-
-    mScoreLabel = Label::createWithBMFont( "fonts/markerFelt.fnt", "Score: 0" );
-    mScoreLabel->setPosition( Point( frameSize.width*0.9, frameSize.height*0.90 ) );
-    addChild( mScoreLabel, 10 );
-
-
-    eSpeedLabel = Label::createWithBMFont( "fonts/markerFelt.fnt", "Speed: 0" );
-    eSpeedLabel->setPosition( Point( frameSize.width*0.1, frameSize.height*0.85 ) );
-    addChild( eSpeedLabel, 10 );
-
-    mSpeedLabel = Label::createWithBMFont( "fonts/markerFelt.fnt", "Speed: 0" );
-    mSpeedLabel->setPosition( Point( frameSize.width*0.9, frameSize.height*0.85 ) );
-    addChild( mSpeedLabel, 10 );
-
-    schedule( schedule_selector( PlayScene::updateScore ) );
-}
-
-void PlayScene::updateScore( float interval ){
-    eScoreLabel->setString( "Score: " + earthSnake->getScore() );
-    mScoreLabel->setString( "Score: " + marsSnake->getScore() );
-    eSpeedLabel->setString( "Speed: " + ( int ) earthSnake->getSpeed() );
-    mSpeedLabel->setString( "Speed: " + ( int ) marsSnake->getSpeed() );
+void PlayScene::backToMenuCallBack(Ref* sender){
+	Director::getInstance()->replaceScene(MenuScene::createScene());
 }

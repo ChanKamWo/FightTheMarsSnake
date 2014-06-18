@@ -1,9 +1,3 @@
-#include <string>
-#include <vector>
-#include <list>
-#include <iostream>
-#include <assert.h>
-
 #include "MenuScene.h"
 #include "PlayScene.h"
 
@@ -16,9 +10,12 @@ bool MenuScene::init()
     initBackground();
     auto startMenuItem = MenuItemImage::create( "startgame.png", "startgame_selected.png", CC_CALLBACK_1( MenuScene::startCallback, this ) );
     auto endMenuItem = MenuItemImage::create( "exitgame.png", "exitgame_selected.png", CC_CALLBACK_1( MenuScene::exitCallback, this ) );
-
-	Size appSize = Director::getInstance()->getOpenGLView()->getFrameSize();
-    auto menu = Menu::create( startMenuItem, endMenuItem, NULL );
+	
+	Size appSize = Director::getInstance()->getWinSize();
+	startMenuItem->setScale(MIN(appSize.width / 5 / startMenuItem->getContentSize().width, appSize.height / 5 / startMenuItem->getContentSize().height));
+	endMenuItem->setScale(MIN(appSize.width / 5 / endMenuItem->getContentSize().width, appSize.height / 5 / endMenuItem->getContentSize().height));
+    
+	auto menu = Menu::create( startMenuItem, endMenuItem, NULL );
     menu->alignItemsHorizontally();
     menu->setPosition( Point( appSize.width / 2, appSize.height / 5 *2 ) );
     addChild( menu );
@@ -28,7 +25,7 @@ bool MenuScene::init()
 
 void MenuScene::initBackground(){
 
-    Sprite* bgImage = Sprite::create( "welcome.png" );
+    Sprite* bgImage = Sprite::create( "welcome.jpg" );
     Size appSize = Director::getInstance()->getWinSizeInPixels();
     bgImage->setScaleX( appSize.width / bgImage->getContentSize().width );
     bgImage->setScaleY( appSize.height / bgImage->getContentSize().height );
@@ -44,7 +41,7 @@ Scene* MenuScene::createScene(){
 }
 
 void MenuScene::startCallback( Ref * pSender ){
-	Director::getInstance()->replaceScene(PlayScene::createScene());
+	Director::getInstance()->replaceScene(TransitionProgressRadialCCW::create(1.0, PlayScene::createScene()));
 }
 
 void MenuScene::exitCallback( Ref* pSender ){
