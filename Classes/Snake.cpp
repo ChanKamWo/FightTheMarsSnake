@@ -6,6 +6,7 @@
 Snake* Snake::createSnake(PlayScene* scene, string name, vector<Position> positions, int orientation){
 	auto snake = create();
 	snake->originalSpeed = -1;
+	snake->alive = true;
 	snake->score = 0;
 	snake->myName = name;
 	snake->playScene = scene;

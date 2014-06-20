@@ -17,5 +17,7 @@ public:
     static Effect* createFrozenEffect();
 
 	static Effect* createSlimEffect();
+
+	static Effect* createBreakupEffect();
 };
 #endif

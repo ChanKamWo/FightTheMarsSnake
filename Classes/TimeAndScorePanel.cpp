@@ -35,11 +35,13 @@ bool TimeAndScorePanel::init()
 	this->earthSnakeScoreLabel->setPosition(Point(120,size.height-20));
 	this->earthSnakeScoreLabel->setOpacity(150);
 	this->addChild(this->earthSnakeScoreLabel);
+	eScore = 0;
 
 	this->marsSnakeScoreLabel	= Label::createWithBMFont("fonts/markerFelt.fnt", "Mars Snake Score : 0");
 	this->marsSnakeScoreLabel->setPosition(Point(120,size.height-60));
 	this->marsSnakeScoreLabel->setOpacity(150);
 	this->addChild(this->marsSnakeScoreLabel);
+	mScore = 0;
 
 	return true;
 }
@@ -69,7 +71,7 @@ void TimeAndScorePanel::setEarthSnakeScore(int score)
 {
 	char buffer[50];
 	sprintf(buffer,"%s%d","Earth Snake Score  : ",score);
-
+	eScore = score;
 	this->earthSnakeScoreLabel->setString(buffer);
 	this->earthSnakeScoreLabel->runAction(
 		Sequence::create(ScaleTo::create(0.05f,0.8f,0.8f),ScaleTo::create(0.05f,0.5,0.5),ScaleTo::create(0.05f,1.0,1.0),
@@ -82,6 +84,7 @@ void TimeAndScorePanel::setMarsSnakeScore(int score)
 {
 	char buffer[50];
 	sprintf(buffer,"%s%d","Mars Snake Score  : ",score);
+	mScore = score;
 	this->marsSnakeScoreLabel->setString(buffer);
 	this->marsSnakeScoreLabel->runAction(
 		Sequence::create(ScaleTo::create(0.05f,0.8f,0.8f),ScaleTo::create(0.05f,0.5,0.5),ScaleTo::create(0.05f,1.0,1.0),

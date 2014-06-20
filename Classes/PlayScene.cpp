@@ -77,13 +77,18 @@ void PlayScene::addSnake(Snake* pSnake){
 	addChild(pSnake, 1.5);
 }
 
+void PlayScene::removeSnake(Snake* pSnake){
+	snakes.erase(find(snakes.begin(), snakes.end(), pSnake));
+	removeChild(pSnake);
+}
+
 void PlayScene::startGame(){
 	panel->start();
 	food = Food::create();
 	placeFood();
 	addChild(food);
 	for(auto snake : snakes){
-		snake->setSpeed(10);
+		snake->setSpeed(2.0);
 	}
 }
 
@@ -93,9 +98,9 @@ void PlayScene::detectCollision(Snake* pSnake){
 	if(food->getGridPosition() == head->getGridPosition()){
 		pSnake->setScore(pSnake->getScore() + 10);
 		if(pSnake->getName().substr(0, 1) == "E"){
-			panel->setEarthSnakeScore(pSnake->getScore());
+			panel->setEarthSnakeScore(panel->getEarthSnakeScore() + 10);
 		}else{
-			panel->setMarsSnakeScore(pSnake->getScore());
+			panel->setMarsSnakeScore(panel->getMarsSnakeScore() + 10);
 		}
 		pSnake->grow();
 		auto effect = food->getEffect();
@@ -104,15 +109,17 @@ void PlayScene::detectCollision(Snake* pSnake){
 		food = Food::create();
 		placeFood();
 		addChild(food);
-		if(pSnake->getScore() >= 300){
-			win(pSnake->getName().substr(0, 1) == "E");
-		}
+		if(panel->getEarthSnakeScore() >= 300)
+			win(true);
+		else if(panel->getMarsSnakeScore() >= 300)
+			win(false);
 	}else{
 		for(int i = 0;i < 15;i++){
 			for(int j = 0;j < 25;j++){
 				if(tiledMap->getLayer("obstacles")->getTileGIDAt(gridToTiledCoordinate(Position(i, j))) != 0){
 					if(head->getGridPosition() == Position(i, j)){
-						win(pSnake->getName().substr(0, 1) != "E");
+						pSnake->die();
+						judge();
 						return;
 					}
 				}
@@ -121,7 +128,8 @@ void PlayScene::detectCollision(Snake* pSnake){
 		for(auto snake : snakes){
 			for(auto node : snake->getSnakeNodes()){
 				if(head != node && head->getGridPosition() == node->getGridPosition()){
-					win(pSnake->getName().substr(0, 1) != "E");
+					pSnake->die();
+					judge();
 					return;
 				}
 			}
@@ -182,4 +190,28 @@ void PlayScene::win(bool flag){
 
 void PlayScene::backToMenuCallBack(Ref* sender){
 	Director::getInstance()->replaceScene(MenuScene::createScene());
+}
+
+void PlayScene::judge(){
+	bool eAlive = false, mAlive = false;
+	for(auto snake : snakes){
+		auto str = snake->getName();
+		if(str[0] == 'E'){
+			eAlive = snake->isAlive() ? true : eAlive;
+		}else{
+			mAlive = snake->isAlive() ? true : mAlive;
+		}
+	}
+	if(!eAlive){
+		win(false);
+	}else if(!mAlive){
+		win(true);
+	}else{
+		for(int i = 0;i < snakes.size();i++){
+			if(!snakes[i]->isAlive()){
+				removeSnake(snakes[i]);
+				i--;
+			}
+		}
+	}
 }

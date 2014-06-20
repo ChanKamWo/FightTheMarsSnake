@@ -25,13 +25,16 @@ public:
 	void slim(int);
 	void frozen(float t);
 	void removeFrozenImage(float);
-
+	
+	void die(){alive = false;}
+	bool isAlive(){return alive;}
 	float getSpeed(){return speed;}
 	string getName(){return myName;}
 	void setScore(int score){this->score = score;}
 	int getScore(){return score;}
 	std::vector<SnakeNode*> getSnakeNodes(){return snakeNodes;}
 	void setStrategy(MoveStrategy* strategy){moveStrategy = strategy;}
+	~Snake(){delete moveStrategy;}
 	CREATE_FUNC(Snake);
 
 protected:
@@ -42,6 +45,7 @@ protected:
 	string myName;
 	Position tailPos;
 	int tailOrien;
+	bool alive;
 	std::vector<SnakeNode*> snakeNodes;
 	std::vector<Sprite*> frozenImgs;
 };

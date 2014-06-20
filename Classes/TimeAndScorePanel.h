@@ -11,12 +11,15 @@ private :
 	Label *timeLabel;
 	Label *earthSnakeScoreLabel;
 	Label *marsSnakeScoreLabel;
+	int eScore, mScore;
 	long long gameTime ;
 
 public:
 	Label * getTimeLabel()				{return this->timeLabel;}
 	Label * getEarthSnakeScoreLabel()	{return this->earthSnakeScoreLabel;}
 	Label * getMarsSnakeScoreLabel()	{return this->marsSnakeScoreLabel;}
+	int getEarthSnakeScore(){return eScore;}
+	int getMarsSnakeScore(){return mScore;}
 	static TimeAndScorePanel * create();
 	void setEarthSnakeScore(int score);
 	void setMarsSnakeScore(int score);

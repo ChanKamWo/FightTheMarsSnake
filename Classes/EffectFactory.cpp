@@ -5,7 +5,7 @@
 Effect* EffectFactory::createRandomEffect()
 {
     int region = rand( 10 );
-    if ( region <= 3 )
+    if ( region <= 5 )
     {
         region = rand( 100 );
 		if(region < 10){
@@ -14,8 +14,10 @@ Effect* EffectFactory::createRandomEffect()
 			return createSpeedUpEffect();
 		}else if(region < 70){
 			return createSlowDownEffect();
-		}else{
+		}else if(region < 80){
 			return createSlimEffect();
+		}else{
+			return createBreakupEffect();
 		}
     }else
 	    return createNullEffect();
@@ -43,4 +45,8 @@ Effect* EffectFactory::createFrozenEffect()
 
 Effect* EffectFactory::createSlimEffect(){
 	return new SlimEffect();
+}
+
+Effect* EffectFactory::createBreakupEffect(){
+	return new BreakupEffect();
 }

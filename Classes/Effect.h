@@ -53,4 +53,9 @@ public:
 	void work(PlayScene* scene, Snake* snake);
 };
 
+class BreakupEffect : public Effect{
+public:
+	void work(PlayScene* scene, Snake* snake);
+};
+
 #endif

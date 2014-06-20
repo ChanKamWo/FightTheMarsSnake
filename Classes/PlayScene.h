@@ -20,11 +20,13 @@ public:
 
     void startGame();
 	void addSnake(Snake* pSnake);
+	void removeSnake(Snake*);
 	virtual void onEnterTransitionDidFinish();
 	void detectCollision(Snake*);
 	void placeFood();
 	void stop();
 	void win(bool);
+	void judge();
 	void backToMenuCallBack(Ref*);
 
     // implement the "static node()" method manually
@@ -37,16 +39,15 @@ public:
 
 	static cocos2d::Scene* createScene();
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-#endif
+
 
 private:
-	int nextDir;
 	vector<Snake*> snakes;
 	TMXTiledMap* tiledMap;
 	Food* food;
 	TimeAndScorePanel* panel;
+	int nextDir;
 };
 
 #endif // __PLAY_SCENE_H__
